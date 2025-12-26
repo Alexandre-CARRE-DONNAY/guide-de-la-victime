@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide Victimes Dommages Corporels - Me Alexandre CARRÉ-DONNAY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #2c5aa0;
+            --primary-dark: #1a3a6b;
+            --primary-light: #4a7bc8;
+            --accent: #0891b2;
+            --accent-light: #06b6d4;
+            --bg: #f1f5f9;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+            --success: #059669;
+            --warning: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+        }
+        
+        /* HEADER */
+        header {
+            background: white;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+        }
+        
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* CONTAINERS */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* NUMBERED SECTIONS */
+        .numbered-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .section-number {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+        }
+        
+        .section-header h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        /* VICTIM TYPES GRID */
+        .victim-types {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .victim-card {
+            background: white;
+            padding: 1.3rem;
+            border-radius: 10px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+        
+        .victim-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 2px 8px rgba(44, 90, 160, 0.1);
+        }
+        
+        .victim-card h4 {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .victim-card p {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+        
+        /* DEFINITION BOXES */
+        .definition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .definition-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 14px;
+            border: 2px solid var(--border);
+        }
+        
+        .definition-box .icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .definition-box h4 {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        /* REFLEX CHECKLIST */
+        .reflex-list {
+            display: grid;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .reflex-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s;
+        }
+        
+        .reflex-item:hover {
+            border-color: var(--accent);
+            box-shadow: 0 2px 8px rgba(8, 145, 178, 0.1);
+        }
+        
+        .reflex-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        
+        .reflex-content h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .reflex-content p {
+            color: var(--text-light);
+            margin: 0;
+        }
+        
+        /* ALERT BOX */
+        .alert-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-left: 4px solid var(--warning);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+        }
+        
+        .alert-box strong {
+            color: var(--text);
+        }
+        
+        /* RESPONSIBILITY SECTION */
+        .responsibility-flow {
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+            padding: 3rem;
+            border-radius: 16px;
+            margin: 2rem 0;
+        }
+        
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .flow-step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .flow-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .flow-content {
+            flex: 1;
+        }
+        
+        .flow-content h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* PROCESS TIMELINE */
+        .process-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .process-step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+        }
+        
+        .process-step::before {
+            content: '';
+            position: absolute;
+            left: 40px;
+            top: 80px;
+            bottom: -2.5rem;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .process-step:last-child::before {
+            display: none;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(44, 90, 160, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .step-number .num {
+            font-size: 2rem;
+            line-height: 1;
+        }
+        
+        .step-number .label {
+            font-size: 0.7rem;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        
+        .step-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 14px;
+            border: 1px solid var(--border);
+        }
+        
+        .step-content h4 {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .step-duration {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent-light), var(--accent));
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .step-content ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .step-content li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 14px;
+            margin: 1.5rem 0;
+        }
+        
+        .highlight-box strong {
+            color: white;
+        }
+        
+        /* INFO BOX */
+        .info-box {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border-left: 4px solid var(--success);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin: 1.5rem 0;
+        }
+        
+        /* CTA */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            text-align: center;
+            margin: 4rem 0;
+            box-shadow: 0 12px 32px rgba(44, 90, 160, 0.3);
+        }
+        
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+        
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        /* LEXIQUE */
+        .lexique-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .lexique-item {
+            background: white;
+            padding: 1.8rem;
+            border-radius: 14px;
+            border-left: 4px solid var(--primary);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .lexique-term {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .lexique-def {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        /* EXPERTISE TYPES */
+        .expertise-types {
+            display: grid;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .expertise-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 2px solid var(--border);
+            transition: all 0.3s;
+        }
+        
+        .expertise-card:hover {
+            border-color: var(--primary);
+            box-shadow: 0 8px 16px rgba(44, 90, 160, 0.1);
+        }
+        
+        .expertise-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .expertise-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+        
+        .expertise-header h4 {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        .expertise-tag {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .tag-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .tag-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        
+        .tag-info {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        
+        /* SCHEMA */
+        .schema {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 1px solid var(--border);
+        }
+        
+        .schema-flow {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .schema-box {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem;
+            border-radius: 16px;
+            min-width: 180px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(44, 90, 160, 0.2);
+        }
+        
+        .schema-box .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .schema-arrow {
+            font-size: 2rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+        
+        /* CONTACT */
+        .contact-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+        
+        .contact-card h3 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .contact-info {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            padding: 2rem;
+            border-radius: 14px;
+            margin: 2rem 0;
+        }
+        
+        .contact-info p {
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+        
+        /* FOOTER */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 6rem;
+        }
+        
+        footer p {
+            opacity: 0.9;
+            margin: 0.5rem 0;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .victim-types,
+            .definition-grid,
+            .lexique-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .process-step {
+                grid-template-columns: 60px 1fr;
+                gap: 1rem;
+            }
+            
+            .step-number {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .step-number .num {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                display: none;
+            }
+        }
+        
+        /* UTILITIES */
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        ul {
+            margin-left: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+        }
+        
+        strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">Me Alexandre CARRÉ-DONNAY</div>
+            <nav>
+                <ul>
+                    <li><a href="#comprendre">Commencer (5 min)</a></li>
+                    <li><a href="#approfondir">Guide complet</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Guide pour les victimes de dommages corporels</h1>
+            <p class="hero-subtitle">Comprendre vos droits et obtenir une indemnisation juste</p>
+            <div class="hero-cta">
+                <a href="#comprendre" class="btn btn-primary">Commencer (5 min) →</a>
+                <a href="#approfondir" class="btn btn-outline">Guide complet</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTIE 1 : TOUT COMPRENDRE EN 5 MINUTES -->
+    <section id="comprendre" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tout comprendre en 5 minutes</h2>
+                <p>L'essentiel pour protéger vos droits et comprendre la procédure</p>
+            </div>
+
+            <!-- SECTION 1 : JE SUIS BLESSÉ -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h3>Je suis blessé(e), j'ai des blessures physiques ou psychologiques</h3>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 1.5rem;">Victime, quelle définition ?</h4>
+                
+                <div class="definition-grid">
+                    <div class="definition-box">
+                        <div class="icon">👤</div>
+                        <h4>Victime directe</h4>
+                        <p>Vous avez personnellement subi les conséquences d'un accident, d'une agression ou d'une faute médicale. Vous êtes la personne blessée.</p>
+                    </div>
+                    
+                    <div class="definition-box">
+                        <div class="icon">👨‍👩‍👧</div>
+                        <h4>Victime indirecte (les proches)</h4>
+                        <p>Vous êtes un proche de la victime directe. Vous l'accompagnez dans ses souffrances, sa convalescence, ou êtes endeuillé(e) en cas de décès. La notion de proche s'apprécie par le lien d'affection, pas uniquement par le lien de sang.</p>
+                    </div>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin: 2rem 0 1.5rem;">Dans quelle situation suis-je ?</h4>
+                
+                <div class="victim-types">
+                    <div class="victim-card">
+                        <h4>Accident de la circulation</h4>
+                        <p>Piéton, cycliste, passager ou conducteur impliqué dans un accident de la route</p>
+                    </div>
+                    
+                    <div class="victim-card">
+                        <h4>Victime d'une infraction</h4>
+                        <p>Agression physique, agression sexuelle, violences volontaires</p>
+                    </div>
+                    
+                    <div class="victim-card">
+                        <h4>Objet ou animal responsable</h4>
+                        <p>Un objet défectueux, un animal (morsure de chien...) est à l'origine de vos blessures</p>
+                    </div>
+                    
+                    <div class="victim-card">
+                        <h4>Accident médical</h4>
+                        <p>Erreur médicale, infection nosocomiale, accident lors d'une intervention</p>
+                    </div>
+                    
+                    <div class="victim-card">
+                        <h4>Accident de la vie</h4>
+                        <p>Chute, brûlure, accident domestique, accident de sport ou de loisir</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 2 : LES BONS RÉFLEXES -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h3>Les bons réflexes dès maintenant</h3>
+                </div>
+                
+                <div class="alert-box">
+                    <p><strong>⚠️ Important à comprendre :</strong> Être victime n'inverse pas la charge de la preuve. C'est à vous de prouver la réalité de vos préjudices et le lien avec l'accident. D'où l'importance de rassembler un maximum de preuves dès maintenant.</p>
+                </div>
+                
+                <div class="reflex-list">
+                    <div class="reflex-item">
+                        <div class="reflex-icon">📸</div>
+                        <div class="reflex-content">
+                            <h4>Prendre des photos</h4>
+                            <p>Du lieu de l'accident, des véhicules impliqués, de vos blessures visibles, de tout élément matériel pertinent</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">🏥</div>
+                        <div class="reflex-content">
+                            <h4>Certificat médical initial</h4>
+                            <p><strong>Document essentiel !</strong> Consulter immédiatement un médecin pour faire constater TOUTES vos blessures, même celles qui semblent mineures. Ce certificat servira de référence pendant toute la procédure.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">👥</div>
+                        <div class="reflex-content">
+                            <h4>Coordonnées des témoins</h4>
+                            <p>Recueillir les noms, prénoms et contacts de toute personne ayant assisté à l'accident. Leur témoignage peut être déterminant.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">📧</div>
+                        <div class="reflex-content">
+                            <h4>Déclaration à votre assurance</h4>
+                            <p>Dans les 5 jours ouvrés, par lettre recommandée avec AR. Soyez factuel, ne commentez pas, ne reconnaissez aucune responsabilité. Votre déclaration peut se retourner contre vous.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">📋</div>
+                        <div class="reflex-content">
+                            <h4>Demander attestations et certificats</h4>
+                            <p>Sollicitez le maximum de documents pour attester de vos préjudices : certificats médicaux réguliers, attestations de témoins, attestations employeur, arrêts de travail...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">🧾</div>
+                        <div class="reflex-content">
+                            <h4>Conserver tous les justificatifs</h4>
+                            <p>Gardez et classez chronologiquement TOUS les documents : factures médicales, frais de transport, aide à domicile, matériel médical, aménagements... Tout doit être justifié !</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">⚠️</div>
+                        <div class="reflex-content">
+                            <h4>Ne rien signer trop vite</h4>
+                            <p>N'acceptez AUCUNE transaction ou proposition d'indemnisation rapide avant de connaître l'étendue réelle de vos séquelles et d'avoir consulté un avocat.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="reflex-item">
+                        <div class="reflex-icon">⚖️</div>
+                        <div class="reflex-content">
+                            <h4>Consulter un avocat rapidement</h4>
+                            <p>Un avocat compétent en droit des victimes protégera vos intérêts dès le début. Plus vous le contactez tôt, mieux il pourra sécuriser votre dossier.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION 3 : FAIRE RECONNAÎTRE UN DROIT À INDEMNISATION -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h3>Il faut faire reconnaître un droit à indemnisation</h3>
+                </div>
+                
+                <div class="responsibility-flow">
+                    <div class="flow-step">
+                        <div class="flow-icon">❓</div>
+                        <div class="flow-content">
+                            <h4>Existe-t-il une personne responsable ?</h4>
+                            <p>Un conducteur, un propriétaire, un professionnel de santé, une entreprise, une collectivité... Quelqu'un est-il à l'origine de vos blessures ?</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">✓</div>
+                        <div class="flow-content">
+                            <h4>Si OUI → Cette personne (ou son assurance) doit vous indemniser</h4>
+                            <p><strong>Si la personne responsable est solvable :</strong> elle vous indemnisera directement, ou plus souvent son assurance responsabilité civile prendra en charge votre indemnisation.</p>
+                            <p style="margin-top: 0.8rem;"><strong>Si la personne responsable n'est pas assurée ou a pris la fuite :</strong> des fonds de garantie peuvent intervenir (FGAO pour les accidents de la route, FGTI pour les agressions, etc.). Tout n'est pas perdu ! Ces fonds ont été créés précisément pour indemniser les victimes dans ces situations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flow-step">
+                        <div class="flow-icon">🛡️</div>
+                        <div class="flow-content">
+                            <h4>Votre propre assurance peut aussi intervenir</h4>
+                            <p>Si vous avez souscrit une garantie accident de la vie (GAV), une garantie conducteur, ou une protection juridique, vérifiez vos contrats d'assurance : ils peuvent prévoir une indemnisation.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p style="text-align: center; margin: 0;"><strong>L'objectif :</strong> Identifier qui doit vous indemniser, puis faire valoir vos droits avec l'aide d'un avocat pour obtenir une réparation intégrale de tous vos préjudices.</p>
+                </div>
+            </div>
+
+            <!-- SECTION 4 : LES ÉTAPES -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h3>Quelles seront les étapes de mon indemnisation ?</h3>
+                </div>
+                
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">1</span>
+                            <span class="label">JOUR J</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>L'accident</h4>
+                            <span class="step-duration">Immédiatement</span>
+                            <p><strong>Premières démarches :</strong></p>
+                            <ul>
+                                <li>Certificat médical initial détaillé</li>
+                                <li>Photos du lieu et des circonstances</li>
+                                <li>Coordonnées des témoins</li>
+                                <li>Déclaration à l'assurance (dans les 5 jours)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">2</span>
+                            <span class="label">PHASE SOINS</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>Période de soins et de convalescence</h4>
+                            <span class="step-duration">Semaines à mois</span>
+                            <p>Hospitalisation, rééducation, traitements médicaux, suivi régulier.</p>
+                            <p><strong>Dès cette phase :</strong> Vous pouvez demander des <strong>provisions</strong> (avances) à l'assureur pour couvrir vos frais urgents (pertes de revenus, frais médicaux, aide à domicile...).</p>
+                            <div class="info-box" style="margin-top: 1rem;">
+                                <p><strong>💡 Moment idéal pour consulter un avocat :</strong> Il vous aidera à constituer un dossier solide, obtenir des provisions régulières, et anticiper l'expertise médicale future.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">3</span>
+                            <span class="label">DATE CLEF</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>La consolidation</h4>
+                            <span class="step-duration">Variable selon gravité</span>
+                            <p>Moment où votre état de santé devient stable. Les séquelles sont désormais définitives.</p>
+                            <p><strong>Important :</strong> Consolidation ≠ guérison ! Cela signifie simplement que votre état n'évoluera plus significativement.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">4</span>
+                            <span class="label">EXPERTISE</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>L'expertise médicale</h4>
+                            <p><strong>Moment décisif !</strong> Un médecin expert examine votre état consolidé et évalue vos séquelles définitives. C'est sur cette base que sera calculée votre indemnisation.</p>
+                            <div class="highlight-box" style="margin-top: 1rem;">
+                                <p style="margin: 0;"><strong>⚠️ Ne JAMAIS vous présenter seul à une expertise :</strong> Faites-vous assister par votre avocat ET par un médecin conseil qui défendront vos intérêts. L'expert est souvent choisi et rémunéré par l'assurance adverse.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">5</span>
+                            <span class="label">NÉGOCIATION</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>Offre d'indemnisation et négociation</h4>
+                            <span class="step-duration">Quelques mois</span>
+                            <p>L'assureur fait une proposition chiffrée basée sur le rapport d'expertise.</p>
+                            <p><strong>Rôle de votre avocat :</strong></p>
+                            <ul>
+                                <li>Vérifier que tous vos préjudices sont pris en compte</li>
+                                <li>Analyser si les montants proposés sont justes</li>
+                                <li>Négocier pour obtenir une meilleure offre</li>
+                                <li>Servir d'intermédiaire entre vous et l'assurance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">6</span>
+                            <span class="label">FINALISATION</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>Transaction ou procès</h4>
+                            <span class="step-duration">Variable</span>
+                            <p><strong>Si accord amiable :</strong> Signature d'une transaction et versement rapide de l'indemnisation.</p>
+                            <p><strong>Si désaccord :</strong> Votre avocat saisit le tribunal compétent pour faire valoir vos droits devant un juge.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">
+                            <span class="num">7</span>
+                            <span class="label">FIN</span>
+                        </div>
+                        <div class="step-content">
+                            <h4>Indemnisation finale</h4>
+                            <span class="step-duration">Quelques semaines</span>
+                            <p>Versement des sommes dues, déduction faite des provisions déjà perçues. Clôture définitive du dossier.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <p><strong>📊 Délais moyens globaux :</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                        <li>Blessures légères : 6 mois à 1 an</li>
+                        <li>Blessures moyennes : 1 à 2 ans</li>
+                        <li>Blessures graves : 2 à 5 ans ou plus</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta">
+                <h2>Besoin d'approfondir ?</h2>
+                <p>Consultez le guide complet pour tout comprendre en détail</p>
+                <a href="#approfondir" class="btn btn-primary">Accéder au guide complet →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTIE 2 : GUIDE COMPLET -->
+    <section id="approfondir" class="section" style="background: white; padding: 6rem 0;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Guide complet</h2>
+                <p>Tout savoir sur vos droits et la procédure d'indemnisation</p>
+            </div>
+
+            <!-- 1. LEXIQUE -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <h3>Lexique : comprendre les termes clés</h3>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 1.5rem;">Lésions, séquelles, consolidation</h4>
+                
+                <p><strong>En un mot : tout est une question de "date".</strong></p>
+                
+                <p>Un <strong>fait générateur</strong> (accident ou agression) est la source de <strong>blessures ou lésions</strong>. Si ces blessures persistent malgré les soins, elles deviennent permanentes et prennent la forme de <strong>séquelles</strong>.</p>
+                
+                <div class="alert-box">
+                    <p><strong>La date clef est celle de la consolidation de votre état de santé.</strong> À partir de ce moment, les lésions deviennent définitives et évoluent en séquelles. La consolidation ne signifie PAS que vous êtes guéri(e), mais que votre état n'évoluera plus significativement.</p>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 3rem; border-radius: 16px; margin: 2rem 0;">
+                    <h4 style="text-align: center; color: var(--primary); font-size: 1.5rem; margin-bottom: 2rem;">Schéma de la consolidation</h4>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr auto 1fr; gap: 2rem; align-items: center;">
+                        <div style="background: white; padding: 2rem; border-radius: 14px; border-left: 4px solid #3b82f6;">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">AVANT consolidation</h4>
+                            <strong style="display: block; margin-bottom: 0.8rem; color: #3b82f6;">PRÉJUDICES TEMPORAIRES</strong>
+                            <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                                <li>Souffrances endurées</li>
+                                <li>Gênes temporaires</li>
+                                <li>Dépenses de soins</li>
+                                <li>Pertes de revenus pendant arrêt</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="text-align: center;">
+                            <div style="width: 80px; height: 80px; background: var(--success); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; font-size: 2rem; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);">
+                                📅
+                            </div>
+                            <strong style="display: block; margin-top: 1rem; color: var(--success);">CONSOLIDATION</strong>
+                        </div>
+                        
+                        <div style="background: white; padding: 2rem; border-radius: 14px; border-left: 4px solid #f59e0b;">
+                            <h4 style="color: var(--primary); margin-bottom: 1rem;">APRÈS consolidation</h4>
+                            <strong style="display: block; margin-bottom: 0.8rem; color: #f59e0b;">PRÉJUDICES PERMANENTS</strong>
+                            <ul style="margin-left: 1.5rem; font-size: 0.95rem;">
+                                <li>Séquelles définitives</li>
+                                <li>Gênes permanentes</li>
+                                <li>Incidences professionnelles futures</li>
+                                <li>Besoin d'aide à vie</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="info-box">
+                    <p style="text-align: center; margin: 0;"><strong>ℹ️ Si vous n'avez pas de séquelles, vous êtes guéri(e).</strong><br>Votre date de consolidation correspondra à la date de guérison.</p>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.4rem; margin: 3rem 0 1.5rem;">Autres termes importants</h4>
+                
+                <div class="lexique-grid">
+                    <div class="lexique-item">
+                        <div class="lexique-term">Amiable</div>
+                        <div class="lexique-def">Alternative au procès. Rechercher un compromis avec la partie adverse pour éviter de saisir un juge.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Contentieux</div>
+                        <div class="lexique-def">Synonyme de procès. Contraire d'amiable. Phase où une action en justice est engagée devant un tribunal.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">État antérieur</div>
+                        <div class="lexique-def">Antécédent médical ayant un impact sur l'état actuel. Ne peut être pris en compte que s'il était symptomatique avant le fait générateur.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Fait générateur</div>
+                        <div class="lexique-def">Terme juridique désignant l'événement à l'origine des blessures : accident, agression, faute médicale...</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Imputabilité / Lien de causalité</div>
+                        <div class="lexique-def">Lien de cause à effet entre le fait générateur et les blessures. Source de débats intenses entre médical et juridique.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Liquidation des préjudices</div>
+                        <div class="lexique-def">Phase finale permettant d'obtenir l'indemnisation totale, déduction faite des provisions. Impossible tant que l'état n'est pas consolidé.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Partie civile</div>
+                        <div class="lexique-def">Victime d'une infraction se constituant devant un juge pour demander réparation du préjudice subi.</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Préjudice</div>
+                        <div class="lexique-def">Conséquence juridique d'un dommage : souffrances, besoin d'aide, diminution des activités, pertes financières...</div>
+                    </div>
+                    
+                    <div class="lexique-item">
+                        <div class="lexique-term">Provision</div>
+                        <div class="lexique-def">Avance sur l'indemnisation finale versée par l'adversaire en attendant la consolidation de l'état de santé.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. EXPERTISE MÉDICALE -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <h3>Pourquoi une expertise médicale ?</h3>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 1.5rem;">À quoi ça sert ?</h4>
+                
+                <div class="schema">
+                    <div class="schema-flow">
+                        <div class="schema-box">
+                            <div class="icon">⚠️</div>
+                            <strong>ACCIDENT<br>AGRESSION<br>FAUTE</strong>
+                        </div>
+                        
+                        <div class="schema-arrow">→</div>
+                        
+                        <div class="schema-box">
+                            <div class="icon">🩺</div>
+                            <strong>EXPERTISE<br>MÉDICALE</strong>
+                        </div>
+                        
+                        <div class="schema-arrow">→</div>
+                        
+                        <div class="schema-box">
+                            <div class="icon">€</div>
+                            <strong>INDEMNISATION<br>JUSTE</strong>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Si une victime subit un <strong>dommage</strong> (fractures, traumatisme crânien, lésions...), des <strong>préjudices</strong> en découlent : incidences professionnelles, gênes fonctionnelles, besoin d'aide, souffrances physiques et psychiques...</p>
+                
+                <p><strong>L'expertise médicale permet d'évaluer précisément l'ensemble de ces préjudices</strong> et facilite le processus d'indemnisation. Un médecin formé en réparation juridique examine votre état consolidé et chiffre chaque conséquence de l'accident.</p>
+                
+                <h4 style="color: var(--primary); font-size: 1.4rem; margin: 3rem 0 1.5rem;">Les différentes formes d'expertise</h4>
+                
+                <div class="expertise-types">
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">⚠️</div>
+                            <h4>Médecin assurance, SANS avocat</h4>
+                        </div>
+                        <span class="expertise-tag tag-warning">⚠️ À éviter</span>
+                        
+                        <p><strong>Situation :</strong> L'assureur vous convoque chez son médecin conseil habituel. Vous vous y rendez seul(e).</p>
+                        
+                        <p><strong>Risques :</strong></p>
+                        <ul>
+                            <li>Le médecin est choisi, rémunéré et formé par la compagnie d'assurance</li>
+                            <li>Vous êtes seul(e) face à un expert qui connaît parfaitement les "stratégies" pour minimiser les préjudices</li>
+                            <li>Évaluation potentiellement minorée de vos séquelles</li>
+                            <li>Utilisation de l'état antérieur contre vous</li>
+                            <li>Contestation facile de l'imputabilité de certaines séquelles</li>
+                            <li>Aucune contradiction possible pendant l'examen</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">✓</div>
+                            <h4>Médecin assurance, AVEC avocat et/ou médecin conseil</h4>
+                        </div>
+                        <span class="expertise-tag tag-success">✓ Recommandé</span>
+                        
+                        <p><strong>Situation :</strong> Vous êtes accompagné(e) par votre avocat compétent en droit des victimes ET/OU par un médecin conseil indépendant qui défend vos intérêts.</p>
+                        
+                        <p><strong>Avantages :</strong></p>
+                        <ul>
+                            <li><strong>Débat contradictoire :</strong> Vos conseils peuvent questionner l'expert, contester ses conclusions, apporter des précisions</li>
+                            <li><strong>Protection de vos intérêts :</strong> Votre avocat veille à ce que tous vos préjudices soient bien évalués</li>
+                            <li><strong>Expertise médicale :</strong> Votre médecin conseil apporte un éclairage médical indépendant</li>
+                            <li><strong>Vérification du rapport :</strong> Possibilité de faire des observations écrites si le rapport est incomplet</li>
+                            <li><strong>Recours possible :</strong> Si le rapport est manifestement insuffisant, votre avocat peut demander une expertise judiciaire</li>
+                            <li>Processus plus rapide et moins coûteux qu'une expertise judiciaire</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="expertise-card">
+                        <div class="expertise-header">
+                            <div class="expertise-icon">⚖️</div>
+                            <h4>Expertise judiciaire</h4>
+                        </div>
+                        <span class="expertise-tag tag-info">ℹ️ Selon les cas</span>
+                        
+                        <p><strong>Situation :</strong> Un juge désigne un expert judiciaire indépendant. L'expertise a lieu en présence de toutes les parties (victime avec son avocat, assureur avec le sien).</p>
+                        
+                        <p><strong>Avantages :</strong></p>
+                        <ul>
+                            <li><strong>Indépendance théorique :</strong> L'expert est désigné par le juge, pas par l'assurance</li>
+                            <li>Cadre judiciaire plus protecteur</li>
+                            <li>Possibilité de faire des observations écrites détaillées</li>
+                            <li>Recours possibles en cas de désaccord (dire, contredire, expertise complémentaire)</li>
+                        </ul>
+                        
+                        <p><strong>Inconvénients :</strong></p>
+                        <ul>
+                            <li><strong>Lenteur :</strong> Les délais judiciaires rallongent considérablement la procédure (plusieurs mois voire années)</li>
+                            <li><strong>Coût :</strong> L'expertise judiciaire a un coût (provision à avancer, même si elle sera remboursée in fine)</li>
+                            <li>Nécessite d'avoir déjà saisi un tribunal</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="highlight-box">
+                    <p style="text-align: center; margin: 0;"><strong>Notre recommandation :</strong> Ne vous rendez JAMAIS seul(e) à une expertise. L'accompagnement par un avocat ET un médecin conseil est un investissement qui se rentabilise largement par une meilleure évaluation de vos préjudices.</p>
+                </div>
+            </div>
+
+            <!-- 3. DÉLAIS -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <h3>Dans combien de temps serai-je indemnisé(e) ?</h3>
+                </div>
+                
+                <p><strong>Une question difficile qui appelle une réponse de juriste : cela dépend de chaque cas.</strong></p>
+                
+                <p>L'écoulement du temps jusqu'à l'indemnisation est subordonné à plusieurs facteurs :</p>
+                
+                <ol style="margin-left: 2rem; margin-top: 1.5rem;">
+                    <li style="margin-bottom: 1rem;">
+                        <strong>L'évolution de votre état de santé :</strong> Tant que votre état n'est pas stabilisé, vous ne pouvez pas être consolidé(e), donc l'indemnisation définitive est repoussée. Néanmoins, vous serez indemnisé(e) sous forme de provisions.
+                    </li>
+                    <li style="margin-bottom: 1rem;">
+                        <strong>Les délais de traitement :</strong> Par les compagnies d'assurance (gestionnaires et inspecteurs), les médecins conseils, les experts judiciaires, les avocats et les juges.
+                    </li>
+                </ol>
+                
+                <div class="info-box">
+                    <p><strong>📊 Délais moyens par expérience :</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li><strong>Blessures légères :</strong> 6 mois à 1 an</li>
+                        <li><strong>Blessures moyennes :</strong> 1 à 2 ans</li>
+                        <li><strong>Blessures graves :</strong> 2 à 5 ans dans un cadre amiable</li>
+                    </ul>
+                    <p style="margin-top: 1rem;">Ces délais seront rallongés s'il est nécessaire d'engager une procédure judiciaire.</p>
+                </div>
+                
+                <div class="alert-box">
+                    <p><strong>⚠️ Cas particuliers :</strong> Si les séquelles sont très graves et/ou touchent un mineur, l'indemnisation respectueuse des droits de la victime prendra nécessairement plusieurs années. Il est important de ne pas précipiter la procédure au risque d'accepter une indemnisation insuffisante.</p>
+                </div>
+            </div>
+
+            <!-- 4. PIÈGES -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <h3>Quels sont les pièges à éviter ?</h3>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin-bottom: 1.5rem;">Face à un responsable</h4>
+                
+                <div class="alert-box">
+                    <p>Attendez-vous à ce qu'il refuse de reconnaître sa responsabilité. Au minimum, il cherchera à réécrire l'histoire de l'accident pour minimiser sa part de responsabilité.</p>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin: 2rem 0 1.5rem;">Face à un assureur</h4>
+                
+                <p><strong>Un assureur, même de bonne foi, est susceptible de :</strong></p>
+                
+                <div style="background: #fef3c7; padding: 2rem; border-radius: 14px; margin: 1.5rem 0;">
+                    <ul style="margin-left: 1.5rem;">
+                        <li style="margin-bottom: 1rem;"><strong>Refuser l'application du contrat</strong> ou chercher son annulation pour échapper à son obligation d'indemnisation</li>
+                        <li style="margin-bottom: 1rem;"><strong>Vous orienter vers son médecin conseil habituel</strong>, rémunéré et formé par ses soins, pour une expertise potentiellement non respectueuse de vos droits</li>
+                        <li style="margin-bottom: 1rem;"><strong>Imputer vos blessures ou séquelles à votre état de santé antérieur</strong> à l'accident (même si cet état était asymptomatique !)</li>
+                        <li style="margin-bottom: 1rem;"><strong>Lier vos séquelles à un événement postérieur</strong> pour contester le lien de causalité avec l'accident initial</li>
+                        <li style="margin-bottom: 0;"><strong>Vous indemniser moins que vos droits réels</strong>, quelle que soit la qualité du rapport d'expertise médicale</li>
+                    </ul>
+                </div>
+                
+                <div class="highlight-box">
+                    <p style="margin: 0;"><strong>Pourquoi ces stratégies ?</strong> L'assureur a une double contrainte : il doit vous indemniser (obligation légale), mais il cherche légitimement à limiter ses dépenses (logique économique). Sans avocat compétent à vos côtés, le rapport de force est totalement déséquilibré en sa faveur.</p>
+                </div>
+            </div>
+
+            <!-- 5. AVOCAT -->
+            <div class="numbered-section">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <h3>Ai-je besoin des conseils d'un avocat ?</h3>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.4rem; margin-bottom: 1.5rem;">Les avantages d'un avocat compétent</h4>
+                
+                <div class="highlight-box" style="margin-bottom: 2rem;">
+                    <p><strong>Un avocat compétent en droit du dommage corporel est un allié précieux car il rééquilibre les forces en présence.</strong></p>
+                    <p style="margin: 1rem 0 0;">Imaginez la balance de la justice : vous seul d'un côté, l'assureur de l'autre avec ses experts, ses avocats, ses bases de données, son expérience de milliers de dossiers. Sans avocat, les forces sont totalement inégales.</p>
+                </div>
+                
+                <p><strong>Gardez à l'esprit que sans conseils juridiques, la partie adverse a en main :</strong></p>
+                <ul style="margin-left: 2rem; margin-top: 1rem;">
+                    <li>L'obligation de vous indemniser</li>
+                    <li>Les connaissances théoriques, pratiques, et le réseau pour limiter l'ampleur de cette obligation</li>
+                </ul>
+                
+                <p><strong>La crainte de votre adversaire ?</strong> Que vous fassiez appel à un avocat compétent. Car à ce moment, il va perdre le contrôle sur vous.</p>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin: 2.5rem 0 1.5rem;">L'avocat, traducteur entre médical et juridique</h4>
+                
+                <div style="background: linear-gradient(135deg, #eff6ff, #dbeafe); padding: 2.5rem; border-radius: 16px; margin: 2rem 0;">
+                    <p><strong>L'un des rôles essentiels de l'avocat spécialisé en dommage corporel :</strong> faire le pont entre le monde médical et le monde juridico-indemnitaire.</p>
+                    
+                    <div style="margin-top: 2rem;">
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h5 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">📋 Traduction des termes médicaux</h5>
+                            <p style="margin: 0;">Les médecins parlent en termes médicaux (déficit fonctionnel, algies, céphalées...). Les juristes parlent en catégories de préjudices (préjudice fonctionnel permanent, souffrances endurées...). L'avocat maîtrise ces deux langages et traduit l'un dans l'autre pour que vos blessures soient correctement qualifiées juridiquement.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 1.5rem;">
+                            <h5 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">📊 Connaissance des barèmes et jurisprudence</h5>
+                            <p style="margin: 0;">Il connaît les barèmes d'indemnisation, la jurisprudence des tribunaux, les montants habituellement alloués pour tel ou tel préjudice. Cette expertise lui permet de vérifier que l'offre de l'assureur est conforme aux standards d'indemnisation.</p>
+                        </div>
+                        
+                        <div style="background: white; padding: 1.5rem; border-radius: 12px;">
+                            <h5 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem;">💬 Retranscription de votre réalité vécue</h5>
+                            <p style="margin: 0;"><strong>C'est peut-être le plus important :</strong> L'avocat vous connaît. Il a construit le dossier avec vous, il a recueilli votre témoignage, celui de vos proches. Il sait ce que vous avez réellement vécu au quotidien. Il peut donc retranscrire avec justesse, humanité et précision la réalité concrète de vos souffrances et de vos difficultés. Ce n'est pas un chiffre froid sur un tableau : c'est VOTRE histoire, VOS épreuves, VOTRE vie bouleversée. L'avocat incarne cette dimension humaine dans la négociation ou devant le juge.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h4 style="color: var(--primary); font-size: 1.3rem; margin: 2.5rem 0 1.5rem;">Combien coûte un avocat ?</h4>
+                
+                <p>Les honoraires d'un avocat sont librement fixés dans les limites de sa déontologie. Chaque situation fait l'objet d'une évaluation concertée dès le premier rendez-vous.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+                    <div style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 2rem; border-radius: 14px;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Honoraire de base</h4>
+                        <p style="margin: 0;">Sous forme de forfait ou au temps passé, adapté à la complexité du dossier. <strong>La déontologie de l'avocat impose de fixer un honoraire de base</strong> pour rémunérer le travail effectué, indépendamment du résultat.</p>
+                    </div>
+                    <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 2rem; border-radius: 14px;">
+                        <h4 style="color: var(--primary); margin-bottom: 1rem;">Honoraire de résultat</h4>
+                        <p style="margin: 0;">Pourcentage de l'indemnisation obtenue. <strong>Gage d'indépendance et de rigueur</strong> dans le suivi de votre dossier</p>
+                    </div>
+                </div>
+                
+                <p>L'ensemble est détaillé dans une convention d'honoraires qui peut contenir une autorisation de prélèvement sur les sommes obtenues. <strong>Ainsi l'avocat est rémunéré non pas à travers vos économies mais à travers les sommes qu'il obtient pour vous.</strong></p>
+                
+                <div class="info-box">
+                    <p><strong>Les honoraires peuvent être couverts partiellement ou totalement par :</strong></p>
+                    <ul style="margin-left: 1.5rem; margin-top: 1rem;">
+                        <li>La partie adverse (condamnation aux dépens et à l'article 700)</li>
+                        <li>Votre assurance de protection juridique</li>
+                        <li>L'aide juridictionnelle si votre situation le permet</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CONTACT -->
+            <div id="contact" style="margin-top: 4rem;">
+                <div class="contact-card">
+                    <h3>Me Alexandre CARRÉ-DONNAY</h3>
+                    <p style="font-size: 1.2rem; color: var(--text-light); margin-bottom: 2rem;">
+                        Avocat au Barreau de Lyon<br>
+                        Compétent en droit des victimes
+                    </p>
+                    
+                    <div class="contact-info">
+                        <p><strong>📍 40 Rue Raulin, 69003 Lyon</strong></p>
+                        <p><strong>📧 avocat@carredonnay.fr</strong></p>
+                        <p><strong>🌐 www.carredonnay.fr</strong></p>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+                        <div style="background: linear-gradient(135deg, #e0f2fe, #bae6fd); padding: 1.8rem; border-radius: 14px; text-align: left;">
+                            <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.1rem;">Indépendance totale</h4>
+                            <p style="margin: 0; color: var(--text); font-size: 0.95rem;">Je ne travaille jamais pour les compagnies d'assurance. Je défends exclusivement les victimes.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 1.8rem; border-radius: 14px; text-align: left;">
+                            <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.1rem;">Accompagnement personnalisé</h4>
+                            <p style="margin: 0; color: var(--text); font-size: 0.95rem;">Chaque dossier est unique. Je prends le temps d'écouter et de comprendre votre situation.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); padding: 1.8rem; border-radius: 14px; text-align: left;">
+                            <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.1rem;">Réseau de professionnels</h4>
+                            <p style="margin: 0; color: var(--text); font-size: 0.95rem;">Je travaille avec des médecins conseils et experts de confiance pour défendre au mieux vos intérêts.</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #ede9fe, #ddd6fe); padding: 1.8rem; border-radius: 14px; text-align: left;">
+                            <h4 style="color: var(--primary); font-weight: 700; margin-bottom: 0.8rem; font-size: 1.1rem;">Pédagogie</h4>
+                            <p style="margin: 0; color: var(--text); font-size: 0.95rem;">Je vous explique en termes clairs chaque étape de votre procédure.</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p><strong>Me Alexandre CARRÉ-DONNAY</strong></p>
+        <p>Avocat au Barreau de Lyon - Toque 2952</p>
+        <p style="margin-top: 1.5rem; opacity: 0.7; font-size: 0.9rem;">
+            Ce guide a une vocation informative. Chaque situation nécessite une analyse personnalisée.
+        </p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.
